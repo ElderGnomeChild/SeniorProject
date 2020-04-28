@@ -1,0 +1,32 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+<head>
+    <Title>Canvas User</Title>
+</head>
+  
+  
+<body>
+    <h2>Canvas User</h2>
+    <h3>Raw:</h3>
+    <p>{{ data }}</p>
+    <h3>Processed:</h3>
+    <h4>Name: {{ name }}</h4>
+    <h4>Avatar:<img src={{img}}> </h4>
+    
+    <h2><br><br>Todo List</h2>
+    {% for a in assignments %}
+    <h3>{{ a.name }}</h3>
+    {{a.description|safe}}
+    <p>Due date: {{a.due}}</p>
+    <p><a href={{a.link}}>Link to assignment</a></p>
+    <p>Assignment id: {{a.id}}</p>
+    <p>Course id: {{a.course}}</p>
+    <br>
+    <br>
+
+
+    {% endfor %}
+
+    <h2><a href="/admin">Admin App</a></h2>
+    {% endblock %}
+</body>

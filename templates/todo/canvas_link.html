@@ -1,0 +1,53 @@
+{% extends 'todo/base.html' %}
+{% block head %}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- <a href="/"><button>Cancel Adding Task</button></a> -->
+
+<form method="post" action="/canvas-link">
+    {% csrf_token %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Link Your Canvas Account</div>
+            <div class="panel-body">
+            <span><p>To get an API Key, go to your Canvas account settings and select "New Access Token" under Approved Integrations.</p></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.APIKey.label_tag }}</label>
+                            {{ form.APIKey }}
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Link Account">
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+    var x = document.getElementById("id_APIKey");
+    x.className += "form-control";
+</script>
+
+
+{% endblock %}

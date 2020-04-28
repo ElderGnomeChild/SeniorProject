@@ -1,0 +1,70 @@
+{% extends 'todo/base.html' %}
+{% block head %}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- <a href="/"><button>Cancel Adding Task</button></a> -->
+
+<form method="post" action="/newsub/{{task.id}}">
+    {% csrf_token %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Add a Subtask</div>
+            <div class="panel-body">
+
+
+
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.name.label_tag }}</label>
+                            {{ form.name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.description.label_tag }}</label><br>
+                            {{ form.description }}
+                        </div>
+                    </div>
+
+
+                </div>
+                <input type="submit" class="btn btn-primary" value="Add Task">
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+<script>
+    var x = document.getElementById("id_name");
+    var y = document.getElementById("id_description");
+    x.className += "form-control";
+    y.className += "form-control";
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{% static '/todo/img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static '/todo/css/base.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="page-header bg-light">
+            <h1><a href="/">Frozen Water</a></h1>
+            <h4><a href="/logout">Log Out</a></h4>
+            {% block header %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="content-block">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-footer">
+            <p>Daniel Lier Senior Project 2020</p>
+            {% block foot %}
+            {% endblock %}
+        </div>
+    </div>
+</body>

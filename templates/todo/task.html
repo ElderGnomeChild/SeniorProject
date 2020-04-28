@@ -1,0 +1,52 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-9">
+        <h1>{{task.title}}</h1>
+    </div>
+
+    <div class="col-md-3">
+        <h1>
+            {% if not task.completed %}
+            <p><a href="/complete/{{task.id}}""><button type=" button" class="btn btn-success">Complete this
+                    Task</button></a></p>
+            {% else %}
+            <small class="text-right">This task is complete. <a href="/undo/{{task.id}}""><button type=" button"
+                    class="btn btn-warning">Undo</button></a></small>
+            {% endif %}
+
+        </h1>
+    </div>
+</div>
+
+<h2>Due date: {{task.due}}</h2>
+<p class="well">{{task.description}}</p>
+
+{% if subs %}
+<h2>Subtasks</h2>
+<table class="table">
+    {% for s in subs %}
+    {% if s.completed %}
+    <tr class="success">
+        {% else %}
+    <tr>
+        {% endif %}
+        <td><strong>{{s.title}}</strong>:</td>
+        <td>{{s.description}}</td>
+        {% if not s.completed %}
+        <td><a href="/complete/{{task.id}}/{{s.id}}"><button type="button" class="btn btn-success">Complete</button></a>
+        </td>
+        {% else %}
+        <td>Done&nbsp;&nbsp;<a href="/undo/{{task.id}}/{{s.id}}""><button type=" button"
+                class="btn btn-warning">Undo</button></a></td>
+        {% endif %}
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+
+<a href="/newsub/{{task.id}}"><button type="button" class="btn btn-primary">New Subtask</button></a>
+<br>
+<br>
+{% endblock %}

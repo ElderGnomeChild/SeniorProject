@@ -1,0 +1,113 @@
+{% extends 'todo/base.html' %}
+{% block head %}
+<link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+{% endblock %}
+
+
+
+{% block content %}
+
+<!-- <a href="/"><button>Cancel</button></a> -->
+
+<form method="post" action="/newuser">
+    {% csrf_token %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Create an Account</div>
+            <div class="panel-body">
+
+
+
+                <p>{{message}}</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.username.label_tag }}</label>
+                            {{ form.username }}
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.email.label_tag }}</label>
+                            {{ form.email }}
+                        </div>
+                    </div>
+
+
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label">{{ form.password1.label_tag }}</label>
+
+                            {{ form.password1 }}
+
+                        </div>
+                    </div>
+                    <div class='col-md-6'>
+                        <div class="form-group">
+                            <label class="control-label">{{ form.password2.label_tag }}</label>
+
+                            {{ form.password2 }}
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.first_name.label_tag }}</label><br>
+                            {{ form.first_name }}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">{{ form.last_name.label_tag }}</label><br>
+                            {{ form.last_name }}
+                        </div>
+                    </div>
+
+
+                </div>
+                <input type="submit" class="btn btn-primary" value="Create Your Account">
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+</form>
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+
+
+
+<script>
+    var x = document.getElementById("id_username");
+    var y = document.getElementById("id_password1");
+    var z = document.getElementById("id_password2");
+    var a = document.getElementById("id_first_name");
+    var b = document.getElementById("id_last_name");
+    var c = document.getElementById("id_email");
+    x.className += "form-control";
+    y.className += "form-control";
+    z.className += "form-control";
+    a.className += "form-control";
+    b.className += "form-control";
+    c.className += "form-control";
+    y.type = "password";
+    z.type = "password";
+</script>
+
+
+{% endblock %}

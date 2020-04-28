@@ -1,0 +1,35 @@
+{% extends 'todo/base.html' %}
+{% block content %}
+
+<form method="post" action="/log">
+    {% csrf_token %}
+    <div class="form-group">
+        <table class="table-responsive table-condensed">
+            <tr>
+                <td>{{ form.username.label_tag }}</td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.password.label_tag }}</td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Log In" class="btn btn-primary">
+        <input type="hidden" name="next" value="{{ next }}">
+    </div>
+</form>
+
+<div>
+    <br>
+    <a href="/newuser">Create Account</a>
+</div>
+
+<script>
+    var x = document.getElementById("id_password");
+    if (x.type === "text") {
+        x.type = "password";
+    }
+</script>
+
+{% endblock %}
